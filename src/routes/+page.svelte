@@ -13,7 +13,7 @@
 			const formData = new FormData();
 			formData.append('file', file);
 			const xhr = new XMLHttpRequest();
-			xhr.open('PUT', '/', true);
+			xhr.open('PUT', `/${file.name}`, true);
 			xhr.upload.onprogress = (e) => {
 				file.progress = (e.loaded / e.total) * 100;
 			};
@@ -64,13 +64,13 @@
 	{#if queue.length > 0}
 		<div class="flex flex-row justify-center">
 			{#each queue as file}
-			<div class="m-2 rounded-sm border-2 dark:bg-slate-700 p-2 h-auto w-36">
-				<p class="truncate">{file.name}</p>
-				<p>{prettyBytes(file.size)}</p>
-				<div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-					<div class="bg-rose-600 h-2.5 rounded-full" style="width: 45%"></div>
-				  </div>
-			</div>
+				<div class="m-2 rounded-sm border-2 dark:bg-slate-700 p-2 h-auto w-36">
+					<p class="truncate">{file.name}</p>
+					<p>{prettyBytes(file.size)}</p>
+					<div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+						<div class="bg-rose-600 h-2.5 rounded-full" style="width: 45%"></div>
+					</div>
+				</div>
 			{/each}
 		</div>
 	{/if}

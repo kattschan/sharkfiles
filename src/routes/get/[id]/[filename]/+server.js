@@ -4,7 +4,6 @@ export async function GET({ request, params }) {
 	const name = params.filename;
 	const id = params.id;
 	const file = fs.readFileSync(`./files/${id}/${name}`);
-	// make it a readablestream
 	const stream = new ReadableStream({
 		start(controller) {
 			controller.enqueue(file);

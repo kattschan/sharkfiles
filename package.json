@@ -28,6 +28,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"express": "^4.19.2",
 		"pretty-bytes": "^6.1.1"
 	}
 }

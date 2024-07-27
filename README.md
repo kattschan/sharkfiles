@@ -9,3 +9,6 @@ P2P file sharing platform
 - [] Production settings (expiry, overflow management, ratelimits)
 - [] User settings (password, custom expiry)
 - [] `curl --upload-file` support
+- [] Security features (no special characters in the filenames)
+
+[//]: <> (have the version number in the UI)

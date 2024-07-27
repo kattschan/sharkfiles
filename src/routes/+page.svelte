@@ -18,7 +18,7 @@
 			const formData = new FormData();
 			formData.append('file', file);
 			const xhr = new XMLHttpRequest();
-			xhr.open('PUT', `/${file.name}`, true);
+			xhr.open('PUT', `/form/${file.name}`, true);
 			xhr.upload.onprogress = (e) => {
 				file.progress = (e.loaded / e.total) * 100;
 				queue = queue;

@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import prettyBytes from 'pretty-bytes';
 	import Button from '../Button.svelte';
+	import NavbarHome from '../NavbarHome.svelte';
 	let files = [];
 	let queue = [];
 	$: {
@@ -57,6 +58,7 @@
 	});
 </script>
 
+<NavbarHome />
 <input type="file" accept="*/*" class="hidden" multiple />
 <h1 class="text-2xl font-semibold dark:text-white px-4 pt-2 pb-3">Upload a File</h1>
 <div class="border-2 border-dashed border-gray-300 rounded-lg p-4 m-4 mt-0 text-center">
@@ -67,9 +69,9 @@
 	</Button>
 	<div class="flex flex-row justify-center">
 		{#each queue as file}
-			<div class="m-2 rounded-sm border-2 dark:bg-slate-700 dark:text-white p-2 h-auto w-36">
+			<div class="m-2 rounded-sm border-2 dark:bg-slate-700 dark:text-white p-2 h-auto w-48">
 				{#if file.url}
-					<a href={file.url}> <p class="truncate underline">{file.name}</p></a>
+					<a href={file.url} target="_blank"> <p class="truncate underline">{file.name}</p></a>
 				{:else}
 					<p class="truncate">{file.name}</p>
 				{/if}

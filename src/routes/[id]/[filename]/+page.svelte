@@ -3,9 +3,10 @@
 	export let data;
 	import prettyBytes from 'pretty-bytes';
 	import Button from '../../../Button.svelte';
+	import Navbar from '../../../Navbar.svelte';
 </script>
 
-<!--todo: UI :sob:-->
+<Navbar />
 <div class="p-2 text-center align-middle text-white h-full">
 	<h1 class="text-4xl">{data.name}</h1>
 	<h1 class="text-xl">Size: {prettyBytes(data.size)}</h1>

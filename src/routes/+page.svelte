@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import prettyBytes from 'pretty-bytes';
+	import Button from '../Button.svelte';
 	let files = [];
 	let queue = [];
 	$: {
@@ -57,21 +58,18 @@
 </script>
 
 <input type="file" accept="*/*" class="hidden" multiple />
-<h1 class="text-2xl font-semibold dark:text-white px-4 pt-1">Upload a File</h1>
-<div class="border-2 border-dashed border-gray-300 rounded-lg p-4 m-4 text-center">
-	<p class="text-gray-500">Drag & drop your files here</p>
-	<p class="text-gray-500">or</p>
-	<button
-		class="bg-rose-500 hover:bg-rose-700 text-white font-bold py-2 px-4 rounded"
-		on:click={() => document.querySelector('input[type="file"]').click()}
-	>
+<h1 class="text-2xl font-semibold dark:text-white px-4 pt-2 pb-3">Upload a File</h1>
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-4 m-4 mt-0 text-center">
+	<p class="text-gray-500 dark:text-gray-300">Drag & drop your files here</p>
+	<p class="text-gray-500 dark:text-gray-300">or</p>
+	<Button on:click={() => document.querySelector('input[type="file"]').click()}>
 		Select Files
-	</button>
+	</Button>
 	<div class="flex flex-row justify-center">
 		{#each queue as file}
-			<div class="m-2 rounded-sm border-2 dark:bg-slate-700 p-2 h-auto w-36">
+			<div class="m-2 rounded-sm border-2 dark:bg-slate-700 dark:text-white p-2 h-auto w-36">
 				{#if file.url}
-					<a href={file.url}> <p class="truncate">{file.name}</p></a>
+					<a href={file.url}> <p class="truncate underline">{file.name}</p></a>
 				{:else}
 					<p class="truncate">{file.name}</p>
 				{/if}

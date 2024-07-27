@@ -29,7 +29,9 @@
 	"type": "module",
 	"dependencies": {
 		"@sveltejs/adapter-node": "^5.2.0",
+		"body-parser": "^1.20.2",
 		"express": "^4.19.2",
+		"express-fileupload": "^1.5.1",
 		"pretty-bytes": "^6.1.1"
 	}
 }

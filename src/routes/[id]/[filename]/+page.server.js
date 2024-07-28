@@ -4,14 +4,15 @@ import mime from 'mime';
 
 /** @type {import('./$types').PageLoad} */
 export function load({ params }) {
-	if (fs.existsSync(`./files/${params.id}/${params.filename}`)) {
-		const stat = fs.statSync(`./files/${params.id}/${params.filename}`);
+	let name = params.filename.toLowerCase();
+	if (fs.existsSync(`./files/${params.id}/${name}`)) {
+		const stat = fs.statSync(`./files/${params.id}/${name}`);
 		return {
-			name: params.filename,
+			name,
 			size: stat.size,
 			modified: stat.mtime,
 			id: params.id,
-			type: mime.getType(`./files/${params.id}/${params.filename}`)
+			type: mime.getType(`./files/${params.id}/${name}`)
 		};
 	}
 

@@ -15,6 +15,7 @@ app.put('/form/*', upload.single('file'), (req, res) => {
 		return res.status(400).send('No file name provided in the URL.');
 	}
 	fileName = fileName.replace(/%20/g, '-');
+	fileName = fileName.toLowerCase();
 	const id = Math.random().toString(36).substr(2, 5);
 	fs.mkdirSync(`./files/${id}`, { recursive: true });
 	fs.writeFile(`./files/${id}/${fileName}`, file.buffer, (err) => {
@@ -40,6 +41,7 @@ app.put('/*', express.raw({ type: () => true, limit: '5gb' }), (req, res) => {
 	}
 	fileName = encodeURIComponent(fileName);
 	fileName = fileName.replace(/%20/g, '-');
+	fileName = fileName.toLowerCase();
 	const id = Math.random().toString(36).substr(2, 5);
 	fs.mkdirSync(`./files/${id}`, { recursive: true });
 	const fileData = Buffer.isBuffer(file) ? file : Buffer.from(new Uint8Array(file));

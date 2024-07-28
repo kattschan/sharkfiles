@@ -1,12 +1,13 @@
 import * as fs from 'fs';
 
 export async function GET({ request, params }) {
-	if (!fs.existsSync(`./files/${params.id}/${params.filename}`)) {
+	let name = params.filename.toLowerCase();
+	if (!fs.existsSync(`./files/${params.id}/${name}`)) {
 		return {
 			status: 404
 		};
 	}
-	const name = decodeURIcomponent(params.filename);
+	name = decodeURIcomponent(name);
 	const id = params.id;
 	const file = fs.readFileSync(`./files/${id}/${name}`);
 	const stream = new ReadableStream({

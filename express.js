@@ -14,14 +14,8 @@ app.put('/form/*', upload.single('file'), (req, res) => {
 	if (!fileName) {
 		return res.status(400).send('No file name provided in the URL.');
 	}
-	let disallowed = ['/', '\\', ':', '*', '?', '"', '<', '>', '|', '$', '!', '%'];
-	for (let i = 0; i < disallowed.length; i++) {
-		if (fileName.includes(disallowed[i])) {
-			return res.status(400).send('Invalid file name.');
-		}
-	}
 	// replace any spaces or %20 with dashes
-	fileName = fileName.replace(/%20/g, '-').replace(/ /g, '-');
+	fileName = fileName.replace(/%20/g, '-');
 	const id = Math.random().toString(36).substr(2, 5);
 	fs.mkdirSync(`./files/${id}`, { recursive: true });
 	fs.writeFile(`./files/${id}/${fileName}`, file.buffer, (err) => {
@@ -45,6 +39,10 @@ app.put('/*', express.raw({ type: () => true, limit: '5gb' }), (req, res) => {
 	if (!fileName) {
 		return res.status(400).send('No file name provided in the URL.');
 	}
+	// url encode the file name
+	fileName = encodeURIComponent(fileName);
+	// replace any spaces or %20 with dashes
+	fileName = fileName.replace(/%20/g, '-');
 	const id = Math.random().toString(36).substr(2, 5);
 	fs.mkdirSync(`./files/${id}`, { recursive: true });
 	const fileData = Buffer.isBuffer(file) ? file : Buffer.from(new Uint8Array(file));

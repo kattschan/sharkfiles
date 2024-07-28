@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+Allow: /$
+Sitemap: https://sharkfiles.kattschan.co.uk/sitemap.xml

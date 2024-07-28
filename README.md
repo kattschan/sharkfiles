@@ -10,5 +10,7 @@ P2P file sharing platform
 - [] User settings (password, custom expiry)
 - [] `curl --upload-file` support
 - [] Security features (no special characters in the filenames)
+- [] Unit testing!
+- [] Dockerisation
 
 [//]: <> (have the version number in the UI)

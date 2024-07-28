@@ -35,7 +35,7 @@
 					queue = queue;
 				} else {
 					error.status = true;
-					error.message = xhr.status + ' ' + xhr.statusText;
+					error.message = xhr.status + ' ' + xhr.statusText + '\n\n' + xhr.responseText;
 				}
 			};
 			xhr.send(formData);

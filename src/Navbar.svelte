@@ -11,13 +11,13 @@
 							<!-- Current: "bg-slate-900 text-white", Default: "text-slate-300 hover:bg-slate-700 hover:text-white" -->
 							<a
 								href="/"
-								class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 dark:text-slate-300 dark:hover:bg-slate-600 hover:bg-gray-300 dark:hover:text-white hover:text-gray-900"
+								class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 dark:text-slate-300 dark:hover:bg-slate-600 hover:bg-gray-200 dark:hover:text-white hover:text-gray-900"
 								aria-current="page">Upload</a
 							>
 							<a
 								href="https://github.com/kattschan/sharkfiles"
 								target="_blank"
-								class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 dark:text-slate-300 dark:hover:bg-slate-600 hover:bg-gray-300 dark:hover:text-white hover:text-gray-900"
+								class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 dark:text-slate-300 dark:hover:bg-slate-600 hover:bg-gray-200 dark:hover:text-white hover:text-gray-900"
 							>
 								GitHub
 							</a>

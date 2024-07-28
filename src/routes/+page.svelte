@@ -68,8 +68,7 @@
 
 <NavbarHome />
 <input type="file" accept="*/*" class="hidden" multiple />
-<h1 class="text-2xl font-semibold dark:text-white px-4 pt-2 pb-3">Upload a File</h1>
-<div class="border-2 border-dashed border-gray-300 rounded-lg p-4 m-4 mt-0 text-center">
+<div class="border-2 border-dashed border-gray-300 rounded-lg p-4 m-4 text-center">
 	<p class="text-gray-500 dark:text-gray-300">Drag & drop your files here</p>
 	<p class="text-gray-500 dark:text-gray-300">or</p>
 	<Button on:click={() => document.querySelector('input[type="file"]').click()}>
@@ -91,7 +90,22 @@
 		{/each}
 	</div>
 </div>
+
 {#if error.status}
 	<Modal title="Error" message={error.message} />
 {/if}
 <input type="file" accept="*/*" class="hidden" multiple />
+<h1 class="text-2xl font-medium p-4">Thanks for using sharkfiles!</h1>
+<p class="p-4">
+	We're a free, open-source file sharing service with awesome features. To upload, you can drag &
+	drop above, select the button, or:
+</p>
+<pre class="p-2 bg-gray-200 dark:bg-gray-700 rounded">
+	curl -T file.txt https://sharkfiles.kattschan.co.uk/file.txt
+</pre>
+<p class="p-4">
+	The upload will process and return a URL you can use to access your file. You can upload files up
+	to 5GB and they will expire after one week. If you want extra peace of mind with your files, or
+	you want to change the limits, you can host sharkfiles yourself, with instructions coming soon to
+	our GitHub. Thanks for using sharkfiles! :3
+</p>

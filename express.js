@@ -14,7 +14,6 @@ app.put('/form/*', upload.single('file'), (req, res) => {
 	if (!fileName) {
 		return res.status(400).send('No file name provided in the URL.');
 	}
-	// replace any spaces or %20 with dashes
 	fileName = fileName.replace(/%20/g, '-');
 	const id = Math.random().toString(36).substr(2, 5);
 	fs.mkdirSync(`./files/${id}`, { recursive: true });
@@ -39,9 +38,7 @@ app.put('/*', express.raw({ type: () => true, limit: '5gb' }), (req, res) => {
 	if (!fileName) {
 		return res.status(400).send('No file name provided in the URL.');
 	}
-	// url encode the file name
 	fileName = encodeURIComponent(fileName);
-	// replace any spaces or %20 with dashes
 	fileName = fileName.replace(/%20/g, '-');
 	const id = Math.random().toString(36).substr(2, 5);
 	fs.mkdirSync(`./files/${id}`, { recursive: true });
@@ -53,6 +50,17 @@ app.put('/*', express.raw({ type: () => true, limit: '5gb' }), (req, res) => {
 		res.status(200).send(`${config.urlRoot}/${id}/${fileName}`);
 	});
 });
+setTimeout(() => {
+	// Delete files older than 1 week
+	const folders = fs.readdirSync('./files');
+	for (const folder of folders) {
+		const files = fs.readdirSync(`./files/${folder}`);
+		const stats = fs.statSync(`./files/${folder}/${files[0]}`);
+		if (Date.now() - stats.mtime > 604800000) {
+			fs.unlinkSync(`./files/${folder}/${files[0]}`);
+		}
+	}
+}, 3600000);
 
 app.listen(4000, () => {
 	console.log('Server is running on port 4000');

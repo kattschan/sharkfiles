@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
 import * as fs from 'fs';
+import mime from 'mime';
 
 /** @type {import('./$types').PageLoad} */
 export function load({ params }) {
@@ -9,7 +10,8 @@ export function load({ params }) {
 			name: params.filename,
 			size: stat.size,
 			modified: stat.mtime,
-			id: params.id
+			id: params.id,
+			type: mime.getType(`./files/${params.id}/${params.filename}`)
 		};
 	}
 

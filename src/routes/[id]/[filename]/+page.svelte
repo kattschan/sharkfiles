@@ -8,7 +8,7 @@
 
 <Navbar />
 <div class="p-2 text-center align-middle dark:text-white h-full">
-	<h1 class="text-4xl">{decodeURIComponent(data.name)}</h1>
+	<h1 class="text-4xl">{data.name}</h1>
 	<h1 class="text-xl">Size: {prettyBytes(data.size)}</h1>
 	<h1 class="text-xl pb-2">Type: {data.type}</h1>
 	<a href="/get/{data.id}/{data.name}" download>

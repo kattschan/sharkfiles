@@ -8,6 +8,7 @@ P2P file sharing platform
 - ☑️ `curl --upload-file` support
 - ❎ Unit testing!
 - ❎ Dockerisation
+- ❎ Range request support
 - ⚠️ Production settings (expiry, overflow management, ratelimits)
 - ❎ Different 'harnesses' - S3 storage, SFTP, etc.
 - ❎ User settings (password, custom expiry)

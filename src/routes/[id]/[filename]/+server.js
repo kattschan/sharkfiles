@@ -6,7 +6,7 @@ export async function GET({ request, params }) {
 			status: 404
 		};
 	}
-	const name = decodeURIcomponent(params.filename);
+	const name = params.filename;
 	const id = params.id;
 	const file = fs.readFileSync(`./files/${id}/${name}`);
 	const stream = new ReadableStream({

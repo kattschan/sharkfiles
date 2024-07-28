@@ -3,8 +3,13 @@
 	import prettyBytes from 'pretty-bytes';
 	import Button from '../Button.svelte';
 	import NavbarHome from '../NavbarHome.svelte';
+	import Modal from '../Modal.svelte';
 	let files = [];
 	let queue = [];
+	let error = {
+		status: false,
+		message: ''
+	};
 	$: {
 		files.forEach((file) => {
 			file.progress = 0;
@@ -28,6 +33,9 @@
 					console.log('Uploaded');
 					file.url = `${xhr.responseText}`;
 					queue = queue;
+				} else {
+					error.status = true;
+					error.message = xhr.status + ' ' + xhr.statusText;
 				}
 			};
 			xhr.send(formData);
@@ -83,5 +91,7 @@
 		{/each}
 	</div>
 </div>
-
+{#if error.status}
+	<Modal title="Error" message={error.message} />
+{/if}
 <input type="file" accept="*/*" class="hidden" multiple />

@@ -35,7 +35,7 @@ app.put('/*', express.raw({ type: () => true, limit: '5gb' }), (req, res) => {
 	} else {
 		file = req.body;
 	}
-	const fileName = req.path.slice(1);
+	let fileName = req.path.slice(1);
 	if (!fileName) {
 		return res.status(400).send('No file name provided in the URL.');
 	}

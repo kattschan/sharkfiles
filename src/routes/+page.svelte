@@ -81,7 +81,9 @@
 	</Button>
 	<div class="flex flex-row justify-center">
 		{#each queue as file}
-			<div class="m-2 rounded-sm border-2 dark:bg-slate-700 dark:text-white p-2 h-auto w-48 uploadedFile">
+			<div
+				class="m-2 rounded-sm border-2 dark:bg-slate-700 dark:text-white p-2 h-auto w-48 uploadedFile"
+			>
 				{#if file.url}
 					<a href={file.url} target="_blank"> <p class="truncate underline">{file.name}</p></a>
 				{:else}
@@ -89,7 +91,11 @@
 				{/if}
 				<p>{prettyBytes(file.size)}</p>
 				<div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-					<div class="bg-rose-600 h-2.5 rounded-full" style="width: {file.progress}%" role="progressbar"></div>
+					<div
+						class="bg-rose-600 h-2.5 rounded-full"
+						style="width: {file.progress}%"
+						role="progressbar"
+					></div>
 				</div>
 			</div>
 		{/each}

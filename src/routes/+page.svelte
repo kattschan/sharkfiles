@@ -95,15 +95,15 @@
 	<Modal title="Error" message={error.message} />
 {/if}
 <input type="file" accept="*/*" class="hidden" multiple />
-<h1 class="text-2xl font-medium p-4">Thanks for using sharkfiles!</h1>
-<p class="p-4">
+<h1 class="text-2xl font-medium p-4 dark:text-white">Thanks for using sharkfiles!</h1>
+<p class="p-4 dark:text-white">
 	We're a free, open-source file sharing service with awesome features. To upload, you can drag &
 	drop above, select the button, or:
 </p>
-<pre class="p-2 bg-gray-200 dark:bg-gray-700 rounded">
+<pre class="p-2 bg-gray-200 dark:bg-gray-700 rounded dark:text-white">
 	curl -T file.txt https://sharkfiles.kattschan.co.uk/file.txt
 </pre>
-<p class="p-4">
+<p class="p-4 dark:text-white">
 	The upload will process and return a URL you can use to access your file. You can upload files up
 	to 5GB and they will expire after one week. If you want extra peace of mind with your files, or
 	you want to change the limits, you can host sharkfiles yourself, with instructions coming soon to

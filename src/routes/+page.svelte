@@ -99,7 +99,6 @@
 {#if error.status}
 	<Modal title="Error" message={error.message} />
 {/if}
-<input type="file" accept="*/*" class="hidden" multiple />
 <h1 class="text-2xl font-medium p-4 dark:text-white">Thanks for using sharkfiles!</h1>
 <p class="p-4 dark:text-white">
 <h1 class="text-2xl font-medium p-4">Thanks for using sharkfiles!</h1>

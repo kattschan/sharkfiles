@@ -1,10 +1,13 @@
 import express from 'express';
 import fs from 'fs';
 import multer from 'multer';
+import cors from 'cors';
+
 const upload = multer();
-const config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+const config = JSON.parse(fs.readFileSync('src/lib/config.json', 'utf-8'));
 
 const app = express();
+app.use(cors());
 
 app.put('/form/*', upload.single('file'), (req, res) => {
 	console.log('form request');

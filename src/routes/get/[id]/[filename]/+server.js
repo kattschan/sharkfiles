@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-export async function GET({ request, params }) {
+export async function GET({ params }) {
 	let name = params.filename.toLowerCase();
 	if (!fs.existsSync(`./files/${params.id}/${name}`)) {
 		return {

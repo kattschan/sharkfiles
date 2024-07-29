@@ -4,6 +4,11 @@
 	import Button from '../Button.svelte';
 	import NavbarHome from '../NavbarHome.svelte';
 	import Modal from '../Modal.svelte';
+	import { dev } from '$app/environment';
+	let submitURL = '/form';
+	if (dev) {
+		submitURL = 'http://localhost:4000/form';
+	}
 	let files = [];
 	let queue = [];
 	let error = {
@@ -23,7 +28,7 @@
 			const formData = new FormData();
 			formData.append('file', file);
 			const xhr = new XMLHttpRequest();
-			xhr.open('PUT', `/form/${file.name}`, true);
+			xhr.open('PUT', `${submitURL}/${file.name}`, true);
 			xhr.upload.onprogress = (e) => {
 				file.progress = (e.loaded / e.total) * 100;
 				queue = queue;
@@ -76,7 +81,7 @@
 	</Button>
 	<div class="flex flex-row justify-center">
 		{#each queue as file}
-			<div class="m-2 rounded-sm border-2 dark:bg-slate-700 dark:text-white p-2 h-auto w-48">
+			<div class="m-2 rounded-sm border-2 dark:bg-slate-700 dark:text-white p-2 h-auto w-48 uploadedFile">
 				{#if file.url}
 					<a href={file.url} target="_blank"> <p class="truncate underline">{file.name}</p></a>
 				{:else}
@@ -84,7 +89,7 @@
 				{/if}
 				<p>{prettyBytes(file.size)}</p>
 				<div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-					<div class="bg-rose-600 h-2.5 rounded-full" style="width: {file.progress}%"></div>
+					<div class="bg-rose-600 h-2.5 rounded-full" style="width: {file.progress}%" role="progressbar"></div>
 				</div>
 			</div>
 		{/each}
@@ -94,7 +99,6 @@
 {#if error.status}
 	<Modal title="Error" message={error.message} />
 {/if}
-<input type="file" accept="*/*" class="hidden" multiple />
 <h1 class="text-2xl font-medium p-4">Thanks for using sharkfiles!</h1>
 <p class="p-4">
 	We're a free, open-source file sharing service with awesome features. To upload, you can drag &

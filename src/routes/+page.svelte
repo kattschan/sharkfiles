@@ -4,9 +4,9 @@
 	import Button from '../Button.svelte';
 	import NavbarHome from '../NavbarHome.svelte';
 	import Modal from '../Modal.svelte';
-	import { dev } from '$app/environment';
+	export let data;
 	let submitURL = '/form';
-	if (dev) {
+	if (data.prod === false) {
 		submitURL = 'http://localhost:4000/form';
 	}
 	let files = [];

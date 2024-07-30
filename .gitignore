@@ -24,7 +24,5 @@ vite.config.ts.timestamp-*
 # outputted files
 files
 
-# config
-config.json
-
+# test results
 test-results/

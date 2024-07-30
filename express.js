@@ -2,9 +2,13 @@ import express from 'express';
 import fs from 'fs';
 import multer from 'multer';
 import cors from 'cors';
+// CHANGEME when necessary
+var urlRoot = 'http://localhost:4000/';
+if (process.env.ORIGIN) {
+	urlRoot = process.env.ORIGIN;
+}
 
 const upload = multer();
-const config = JSON.parse(fs.readFileSync('src/lib/config.json', 'utf-8'));
 
 const app = express();
 app.use(cors());
@@ -27,7 +31,7 @@ app.put('/form/*', upload.single('file'), (req, res) => {
 				.status(418)
 				.send('Error writing file: ', err.message, '\n\nIntended file name: ', fileName);
 		}
-		res.status(200).send(`${config.urlRoot}/${id}/${fileName}`);
+		res.status(200).send(`${urlRoot}/${id}/${fileName}`);
 	});
 });
 
@@ -52,7 +56,7 @@ app.put('/*', express.raw({ type: () => true, limit: '5gb' }), (req, res) => {
 		if (err) {
 			return res.status(500).send(err.message);
 		}
-		res.status(200).send(`${config.urlRoot}/${id}/${fileName}`);
+		res.status(200).send(`${urlRoot}/${id}/${fileName}`);
 	});
 });
 setTimeout(() => {

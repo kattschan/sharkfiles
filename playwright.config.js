@@ -30,15 +30,6 @@ export default defineConfig({
 		{
 			name: 'Mobile Safari',
 			use: { ...devices['iPhone 12'] }
-		},
-		/* Test against branded browsers. */
-		{
-			name: 'Google Chrome',
-			use: { ...devices['Desktop Chrome'], channel: 'chrome' } // or 'chrome-beta'
-		},
-		{
-			name: 'Microsoft Edge',
-			use: { ...devices['Desktop Edge'], channel: 'msedge' } // or 'msedge-dev'
 		}
 	]
 });
